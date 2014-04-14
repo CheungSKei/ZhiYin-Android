@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="lib" path="libs/mina-core-2.0.7.jar" sourcepath="E:/workspace/ZhiYinFile/ZhiYin-Android/zhiyin/apache-mina-2.0.7/src/mina-core"/>
+	<classpathentry exported="true" kind="lib" path="libs/missian-0.31.jar" sourcepath="E:/workspace/ZhiYinFile/ZhiYin-Android/zhiyin/missian/missian-0.31-src.jar"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
