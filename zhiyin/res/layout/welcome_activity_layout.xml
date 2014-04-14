@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/messageLayout"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+			android:layout_weight="1"
+            android:id="@+id/sendContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:layout_weight="2"
+            android:id="@+id/sendBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF000000"
+            android:text="发送" />
+    </LinearLayout>
+
+    <Button
+        android:layout_alignParentTop="true"
+        android:id="@+id/linkSocket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF000000"
+        android:text="连接服务器" />
+    
+    <Button
+        android:layout_below="@id/linkSocket"
+        android:id="@+id/newPageBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF000000"
+        android:text="开启新页面" />
+
+    <com.zhiyin.android.widget.ScrollTextView
+        android:layout_above="@id/messageLayout"
+        android:layout_below="@id/newPageBtn"
+        android:id="@+id/msgTxt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TextView" />
+</RelativeLayout>

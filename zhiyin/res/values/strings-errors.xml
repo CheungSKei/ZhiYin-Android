@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="http_request_timeout_exception">網絡請求超時</string>
+    <string name="no_network_connected">網絡好像出問題了哦</string>
+    <string name="server_request_exception">服務器連接出錯</string>
+    <string name="server_no_response">服务器无响应</string>
+    <string name="account_is_null">登錄失效</string>
+	<string name="get_data_error">網絡繁忙,請下拉刷新試試看哦</string>
+	<string name="get_main_data_error">網絡繁忙,請點擊重試</string>
+    <string name="nickname_null_error">暱稱不能為空</string>
+    <string name="birthday_error">您還未成年哦</string>
+    <string name="data_null_error">數據不能為空</string>
+    <!-- insufficient memory -->
+    <string name="no_enough_mem_to_upload">內存不足，您可以嘗試重試手機系統再上傳照片</string>
+    <!-- insufficient memory -->
+    <string name="photo_load_failed">照片加載失敗，請稍後再試</string>
+    <!-- insufficient memory -->
+    <string name="inject_sdcard">請插入SD卡</string>
+    <!-- illegal operation -->
+    <string name="illegal_operation">非法操作</string>
+    <string name="data_loading_error">數據加載失敗哦!</string>
+    <string name="load_null">未能讀取到數據，請返回重試</string>
+    <string name="summit_error">提交失敗</string>
+</resources>

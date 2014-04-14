@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- publishing environment, used to specify the WEB server connection:
+    	[formal: formal server]
+    	[test: testing server]
+    	[personal: personal pc] -->
+    <string name="publish_environment">formal</string>
+    
+    <!-- formal server address -->
+    <string name="server_address_formal">http://weloveapi.zhenai.com/</string>
+    
+    <!-- testing server address -->
+    <string name="server_address_test">http://test.mobileapi.zhenai.com/</string>
+    
+    <!-- personal server address http://10.10.121.80/ http://10.10.120.42:8082/-->
+	<string name="server_address_personal">http://10.10.120.42:8082/</string>
+    
+    <!-- mobile channel number -->
+    <string name="channel_id">902967</string>
+    
+    <!-- Android sub channel number -->
+    <string name="sub_channel_id">1</string>
+    
+    <!-- Fragment replace pages animation time -->
+	<integer name="config_fragment_anim_time">150</integer>
+	<!-- thread pool size -->
+	<integer name="thread_pool_capacity">48</integer>
+	
+	<!-- System data dictionary version,consistent with '/assets/data_dictionary.json' file -->
+	<integer name="data_dictionary_version">1</integer>
+	
+	<!-- welcome pictures version -->
+	<integer name="welcome_pic_version">1</integer>
+	
+	<!-- blur radius -->
+	<integer name="blur_radius">15</integer>
+	
+	<!-- blur radius thirdparty -->
+	<integer name="third_blur_radius">3</integer>
+	
+	<!-- max images cache size
+	<integer name="max_image_cache_size">64</integer> -->
+	
+	<!-- normal images floder name -->
+	<string name="default_image_folder_name">ZhenaiFreeLove</string>
+	
+	<!-- normal image files extension -->
+	<string name="default_image_extension">.jpg</string>
+	
+	<!-- normal voice files extension -->
+	<string name="default_voice_extension">.amr</string>
+	<!-- head image height and width -->
+	<integer name="head_iamgesize_style1">63</integer>
+	<integer name="head_iamgesize_style2">72</integer>
+	
+</resources>
