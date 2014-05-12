@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="notification_fmt_multi_msg_and_talker">
+        <item quantity="other">%1$d个联系人发来%2$d条消息</item>
+        <item quantity="one">%1$d个联系人发来%2$d条消息</item>
+    </plurals>
+    <plurals name="notification_fmt_multi_msg_and_one_talker">
+        <item quantity="other">发来%d条消息</item>
+        <item quantity="one">发来%d条消息</item>
+    </plurals>
+</resources>

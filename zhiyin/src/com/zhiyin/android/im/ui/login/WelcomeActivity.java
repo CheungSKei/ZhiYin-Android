@@ -13,14 +13,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.app.Notification;
+import android.app.NotificationManager;
 
 import com.zhiyin.android.constant.Constants;
 import com.zhiyin.android.im.R;
+import com.zhiyin.android.im.booter.ZYNotificationManager;
 import com.zhiyin.android.im.task.socket.AsyncCallBack;
 import com.zhiyin.android.im.task.socket.MessageSocketTaskImpl;
 import com.zhiyin.android.im.ui.BaseActivity;
 import com.zhiyin.android.network.socket.MessageConnectorManager;
 import com.zhiyin.android.network.socket.MessageConnectorService;
+import com.zhiyin.android.platformtools.NotificationTools;
 import com.zhiyin.android.util.StringUtils;
 
 /**
@@ -37,6 +41,9 @@ public class WelcomeActivity extends BaseActivity{
 	private Button mNewPagebtn;
 	private TextView msgContent;
 	private EditText mSendContent;
+	private ZYNotificationManager zyNotificationManager = new ZYNotificationManager(this);
+	// TODO:测试数据
+	private int i = 1;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -102,11 +109,15 @@ public class WelcomeActivity extends BaseActivity{
 		mLinkSocketbtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//连接服务端
-				Intent serviceIntent  = new Intent(WelcomeActivity.this, MessageConnectorService.class);
-				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_HOST, Constants.MESSAGE_SERVER_HOST);
-				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_PORT, Constants.MESSAGE_SERVER_PORT);
-				startService(serviceIntent);
+//				//连接服务端
+//				Intent serviceIntent  = new Intent(WelcomeActivity.this, MessageConnectorService.class);
+//				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_HOST, Constants.MESSAGE_SERVER_HOST);
+//				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_PORT, Constants.MESSAGE_SERVER_PORT);
+//				startService(serviceIntent);
+				
+				// TODO:测试Notification
+				i++;
+				zyNotificationManager.startNotification(getResources().getQuantityString(R.plurals.notification_fmt_multi_msg_and_one_talker,1,i),"2",0);
 			}
 		});
 		
@@ -114,14 +125,23 @@ public class WelcomeActivity extends BaseActivity{
 		mNewPagebtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent =  new Intent(WelcomeActivity.this, WelcomeActivity.class);
-				startActivity(intent);
+//				Intent intent =  new Intent(WelcomeActivity.this, WelcomeActivity.class);
+//				startActivity(intent);
+				
+				// TODO:测试Notification取消
+				zyNotificationManager.cancelNotification();
+				Object[] arrayOfObject = new Object[2];
+			    arrayOfObject[0] = Integer.valueOf(2);
+			    arrayOfObject[1] = Integer.valueOf(5);
+				zyNotificationManager.startNotification(R.drawable.ic_launcher, Notification.DEFAULT_ALL, null, false, "测试", "波波会", getResources().getQuantityString(R.plurals.notification_fmt_multi_msg_and_talker,1,arrayOfObject), null);
 			}
 		});
 		
 		msgContent = (TextView) findViewById(R.id.msgTxt);
 		mSendContent = (EditText) findViewById(R.id.sendContent);
 		
+		
+		zyNotificationManager.startNotification(getResources().getQuantityString(R.plurals.notification_fmt_multi_msg_and_one_talker,1,1),"2",0);
 	}
 	
 	/**
@@ -130,9 +150,7 @@ public class WelcomeActivity extends BaseActivity{
 	 */
 	protected final void sentMessage(String msg){
 		msgContent.append(msg + "\r\n");
-		final int maxY = (msgContent.getLineCount()
-				* msgContent.getLineHeight() + msgContent.getPaddingTop() + msgContent
-					.getPaddingBottom()) - msgContent.getHeight();
+		final int maxY = (msgContent.getLineCount() * msgContent.getLineHeight() + msgContent.getPaddingTop() + msgContent.getPaddingBottom()) - msgContent.getHeight();
 		msgContent.scrollTo(0, maxY);
 		msgContent.invalidate();
 	}

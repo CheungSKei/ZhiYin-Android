@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">知音</string>
+    <string name="app_pushcontent_title">知音</string>
+    <string name="app_update_package_notify">知音更新包提醒</string>
+    <string name="app_recommend_update">有新版本的知音，推荐更新</string>
+    <string name="notification_fmt_multi_msg_and_talker" formatted="false">%d个联系人发来%d条消息</string>
+    <string name="notification_fmt_multi_msg_and_one_talker">发来%d条消息</string>
 </resources>

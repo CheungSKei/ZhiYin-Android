@@ -9,6 +9,10 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.GET_TASKS" />
+	<!-- 闪光灯权限 -->
+2   <uses-permission android:name="android.permission.FLASHLIGHT"/>
+3   <!-- 振动器权限 -->
+4   <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" />
 
     <application
