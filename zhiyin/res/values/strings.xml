@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">知音</string>
+    <string name="shake_alert_share_timeline">分享到朋友圈</string>
+    <string name="shake_alert_send_to_friend">转发</string>
+    <string name="shake_alert_save">保存到手机</string>
+    <string name="app_new">New</string>
+    <string name="app_send">发送</string>
+    <string name="app_sending">正在发送&#8230;</string>
 </resources>

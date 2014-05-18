@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="image" />
+    <item type="id" name="loading_tips">false</item>
+    <item type="id" name="smiley_panel_grid">false</item>
+    <item type="id" name="smiley_grid_item_bg">false</item>
+    <item type="id" name="art_emoji_icon_iv">false</item>
+    <item type="id" name="smiley_grid_control_area">false</item>
+    <item type="id" name="smiley_grid_control_btn">false</item>
+    <item type="id" name="art_emoji_icon_mask">false</item>
+    <item type="id" name="art_emoji_del_tv">false</item>
+    <item type="id" name="art_emoji_icon_text">false</item>
+    <item type="id" name="art_emoji_new_tv">false</item>
+    <item type="id" name="smile_panel_whole_layout">false</item>
+    <item type="id" name="smiley_panel_display_view">false</item>
+    <item type="id" name="smiley_panel_flipper">false</item>
+    <item type="id" name="smiley_panel_dot">false</item>
+    <item type="id" name="smiley_scroll_view">false</item>
+    <item type="id" name="smiley_panel_btn_group">false</item>
+    <item type="id" name="send_btn">false</item>
+    <item type="id" name="smiley_panel_view_pager">false</item>
+</resources>

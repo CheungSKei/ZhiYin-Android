@@ -2,4 +2,40 @@
 
     <style name="AppTheme" parent="android:Theme.Light" />
 
+    <style name="mediumCustomProgressBar" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/progress_medium_holo</item>
+    </style>
+    
+    <style name="EmojiCommonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:maxWidth">@dimen/emoji_common_item_width</item>
+        <item name="android:maxHeight">@dimen/emoji_common_item_height</item>
+    </style>
+    
+    <style name="ZYSmallButton">
+        <item name="android:textSize">@dimen/HintTextSize</item>
+        <item name="android:textColor">@color/white_color_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/SmallPadding</item>
+        <item name="android:paddingRight">@dimen/SmallPadding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">@dimen/SmallButtonWidth</item>
+        <item name="android:minHeight">@dimen/SmallButtonHeight</item>
+    </style>
+    <style name="ZYSmallGreenButton" parent="@style/ZYSmallButton">
+        <item name="android:background">@drawable/btn_style_green</item>
+    </style>
+    <style name="ZYSmallRedButton" parent="@style/ZYSmallButton">
+        <item name="android:background">@drawable/btn_style_red</item>
+    </style>
+    <style name="ZYSmallGreyButton" parent="@style/ZYSmallButton">
+        <item name="android:textColor">@color/normal_text_color_selector</item>
+        <item name="android:background">@drawable/btn_style_grey</item>
+    </style>
+    <style name="ZYSmallBlackButton" parent="@style/ZYSmallButton">
+        <item name="android:background">@drawable/btn_style_black</item>
+    </style>
 </resources>
