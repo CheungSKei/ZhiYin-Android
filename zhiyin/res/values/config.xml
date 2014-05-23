@@ -5,7 +5,7 @@
     	[formal: formal server]
     	[test: testing server]
     	[personal: personal pc] -->
-    <string name="publish_environment">formal</string>
+    <string name="publish_environment">personal</string>
     
     <!-- formal server address -->
     <string name="server_address_formal">http://weloveapi.zhenai.com/</string>

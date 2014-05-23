@@ -6,18 +6,30 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
-public class c {
+/**
+ * Emoji资源ID与名称互转
+ * 
+ * @version 1.0.0
+ * @date 2014-05-19
+ * @author S.Kei.Cheung
+ */
+public class EmojiResourceReChange {
 	
-	private static c gdc = null;
+	private static EmojiResourceReChange gdc = null;
 	private String[] mMerge_smiley_nameArray;
 	private String[] gde;
 	
-	private c(Context paramContext)
+	private EmojiResourceReChange(Context paramContext)
 	{
 		this.mMerge_smiley_nameArray = paramContext.getResources().getStringArray(R.array.merge_smiley_code_smiley);
 		this.gde = paramContext.getResources().getStringArray(R.array.merge_smiley_code_emoji);
 	}
 	
+	/**
+	 * 返回Smiley个数
+	 * @param paramContext
+	 * @return
+	 */
 	public static int getSmileyCodeLength(Context paramContext)
 	{
 		int contentLength = getInstance(paramContext).mMerge_smiley_nameArray.length;
@@ -27,6 +39,11 @@ public class c {
 		return contentLength;
 	}
 	
+	/**
+	 * 返回Emoji个数
+	 * @param paramContext
+	 * @return
+	 */
 	public static int getEmojiCodeLength(Context paramContext)
 	{
 		int i = getInstance(paramContext).gde.length;
@@ -36,14 +53,25 @@ public class c {
 		return i;
 	}
 	
-	private static c getInstance(Context paramContext)
+	/**
+	 * 初始化
+	 * @param paramContext
+	 * @return
+	 */
+	private static EmojiResourceReChange getInstance(Context paramContext)
 	{
 		if (gdc == null) {
-			gdc = new c(paramContext);
+			gdc = new EmojiResourceReChange(paramContext);
 		}
 		return gdc;
 	}
 	
+	/**
+	 * 传入编号，返回相应Drawable
+	 * @param paramContext
+	 * @param paramInt		对应编号
+	 * @return
+	 */
 	public static Drawable getSmileyDrawable(Context paramContext, int paramInt)
 	{
 		getInstance(paramContext);
@@ -74,6 +102,12 @@ public class c {
 		return paramContext.getResources().getDrawable(resourceId);
 	}
 	
+	/**
+	 * 取得Emoji资源Id
+	 * @param paramContext
+	 * @param paramInt		对应编号
+	 * @return
+	 */
 	private static int getSmileyEmojiResourceId(Context paramContext, int paramInt)
 	{
 		int resourceId = 0;

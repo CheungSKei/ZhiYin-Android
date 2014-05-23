@@ -14,7 +14,7 @@ import android.widget.GridView;
  * Emoji GridView控件 用于显示Emoji图标的九宫格
  * 
  * @version 1.0.0
- * @date 2013-1-29
+ * @date 2014-05-19
  * @author S.Kei.Cheung
  */
 public class EmojiGrid extends GridView implements AdapterView.OnItemClickListener{
@@ -139,6 +139,10 @@ public class EmojiGrid extends GridView implements AdapterView.OnItemClickListen
 		setNumColumns(numColumns);
 		// 更新Emoji
 		this.mEmojiGridAdapter.update();
+	}
+	
+	public int getTotalPage(){
+		return this.mTotalPage;
 	}
 	
 	/**

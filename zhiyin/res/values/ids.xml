@@ -19,4 +19,5 @@
     <item type="id" name="smiley_panel_btn_group">false</item>
     <item type="id" name="send_btn">false</item>
     <item type="id" name="smiley_panel_view_pager">false</item>
+    <item type="id" name="zypage_control_img">false</item>
 </resources>

@@ -1,20 +1,19 @@
 package com.zhiyin.android.im.ui.emoji;
 
-import com.zhiyin.android.im.R;
-
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhiyin.android.im.R;
+
 /**
  * Emoji   ≈‰∆˜
  * 
  * @version 1.0.0
- * @date 2013-1-29
+ * @date 2014-05-19
  * @author S.Kei.Cheung
  */
 public class EmojiGridAdapter extends BaseAdapter {
@@ -96,7 +95,7 @@ public class EmojiGridAdapter extends BaseAdapter {
 //		}
 		
 		holder.art_emoji_icon_iv.setImageDrawable(null);
-		holder.art_emoji_icon_iv.setImageDrawable(c.getSmileyDrawable(mContext,position + (-1 + this.mItemsPerPage) * this.mCurPage));
+		holder.art_emoji_icon_iv.setImageDrawable(EmojiResourceReChange.getSmileyDrawable(mContext,position + (-1 + this.mItemsPerPage) * this.mCurPage));
 		return convertView;
 	}
 	
