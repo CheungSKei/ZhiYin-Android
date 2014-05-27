@@ -119,31 +119,74 @@ public class EmojiResourceReChange {
 		}
 		
 		getInstance(paramContext);
-		switch (paramInt)
-		{
-			case 360:
-			case 351:
-			case 357:
-			case 348:
-			case 355:
-			case 352:
-			case 96:
-			case 342:
-			case 344:
-			case 349:
-			case 353:
-			case 115:
-			case 116:
-			case 394:
-			case 368:
-			case 165:
-			case 136:
-			case 337:
-			case 280:
+		
+		int emojiNum = 0;
+		switch(paramInt){
+			case 100:
+				emojiNum = 360;
+				break;
+			case 101:
+				emojiNum = 351;
+				break;
+			case 102:
+				emojiNum = 357;
+				break;
+			case 103:
+				emojiNum = 348;
+				break;
+			case 104:
+				emojiNum = 355;
+				break;
+			case 105:
+				emojiNum = 352;
+				break;
+			case 106:
+				emojiNum = 96;
+				break;
 			case 107:
-				resourceId = paramContext.getResources().getIdentifier("emoji_" + paramInt, "drawable", paramContext.getPackageName());
+				emojiNum = 342;
+				break;
+			case 108:
+				emojiNum = 344;
+				break;
+			case 109:
+				emojiNum = 349;
+				break;
+			case 110:
+				emojiNum = 353;
+				break;
+			case 111:
+				emojiNum = 115;
+				break;
+			case 112:
+				emojiNum = 116;
+				break;
+			case 113:
+				emojiNum = 394;
+				break;
+			case 114:
+				emojiNum = 368;
+				break;
+			case 115:
+				emojiNum = 165;
+				break;
+			case 116:
+				emojiNum = 136;
+				break;
+			case 117:
+				emojiNum = 337;
+				break;
+			case 118:
+				emojiNum = 280;
+				break;
+			case 119:
+				emojiNum = 107;
+				break;
+			default:
+				emojiNum = 0;
 				break;
 		}
+		resourceId = paramContext.getResources().getIdentifier("emoji_" + emojiNum, "drawable", paramContext.getPackageName());
 		return resourceId;
 	}
 	

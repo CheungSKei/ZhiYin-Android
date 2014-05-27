@@ -1,6 +1,7 @@
 package com.zhiyin.android.im.ui.emoji;
 
 import com.zhiyin.android.util.DebugUtils;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -15,6 +16,8 @@ import android.util.AttributeSet;
  */
 public class EmojiPanelVP extends CustomViewPager {
 
+	private final String TAG = "MicroMsg.EmojiPanel.VP";
+	
 	public EmojiPanelVP(Context paramContext)
 	{
 		super(paramContext);
@@ -36,7 +39,7 @@ public class EmojiPanelVP extends CustomViewPager {
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		DebugUtils.warn("MicroMsg.EmojiPanel.VP", "w: %d, h: %d, oldw: %d, oldh: %d", new Integer[]{w,h,oldw,oldh});
+		DebugUtils.warn(TAG, "w: %d, h: %d, oldw: %d, oldh: %d", new Integer[]{w,h,oldw,oldh});
 	}
 	
 }

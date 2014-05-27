@@ -11,8 +11,18 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+/**
+ * 
+ * Emoji ImageView
+ * 
+ * @version 1.0.0
+ * @date 2014-05-21
+ * @author S.Kei.Cheung
+ */
 public class EmojiView extends ImageView{
 
+	private final String TAG = "MicroMsg.EmojiView";
+	
 	private static int mEmojiViewImageSize;
 	
 	private Bitmap mEmojiBitmap = null;
@@ -84,7 +94,7 @@ public class EmojiView extends ImageView{
 
 		if (Build.VERSION.SDK_INT >= 19)
 		{
-			DebugUtils.debug("MicroMsg.EmojiView", "user emo_loading_bg");
+			DebugUtils.debug(TAG, "user emo_loading_bg");
 			this.mEmojiBitmap = ((BitmapDrawable)getContext().getResources().getDrawable(R.drawable.emo_loading_bg)).getBitmap();
 			//this.mEmojiBitmap = ((BitmapDrawable)getContext().getResources().getDrawable(R.drawable.image_download_fail_icon)).getBitmap();
 		}

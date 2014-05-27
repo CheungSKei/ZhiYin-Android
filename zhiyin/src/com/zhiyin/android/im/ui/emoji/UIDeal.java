@@ -1,6 +1,8 @@
 package com.zhiyin.android.im.ui.emoji;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -11,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zhiyin.android.im.R;
+import com.zhiyin.android.im.application.BaseApplication;
 import com.zhiyin.android.util.DebugUtils;
+import com.zhiyin.android.util.ScreenUtils;
+import com.zhiyin.android.widget.ZYFlipper;
 
 /**
  * Emoji弹出框
@@ -20,21 +25,23 @@ import com.zhiyin.android.util.DebugUtils;
  * @date 2014-05-22
  * @author S.Kei.Cheung
  */
-public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListener,View.OnClickListener{
+public final class UIDeal implements IRadioButtonId,SizeChangedListener,View.OnClickListener,ZYFlipper.onScrollScreenListener{
 
+	private final String TAG = "MicroMsg.EmojiPanel.UIDeal";
+	
 	private View mEmojiView;
 	private ZYDotView mZYDotView;
-	private EmojiPanelVP mEmojiPanelVP;
+	private ZYFlipper mEmojiPanelVP;
 	private ZYSmoothHorizontalScrollView mZYSmoothHorizontalScrollView;
 	private ZYRadioGroupView mZYRadioGroupView;
 	private ZYRadioImageButton mZYRadioImageButton;
 	private ImageButton mStyleTabButton;
 	private TextView mSend_btn;
-//	private volatile boolean mIsInit = false;
+	private volatile boolean mIsInit = false;
 	private volatile int mCurentPage = -1;
 	private Context mContext;
 
-	public EmojiPanelDialog(Context paramContext)
+	public UIDeal(Context paramContext)
 	{
 		this.mContext = paramContext;
 	}
@@ -54,7 +61,7 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 			int radioButtonId) {
 		
 	}
-	
+
 	/**
 	 * 设置按钮是否可用
 	 * @param enabled
@@ -80,14 +87,15 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 			
 		}
 		
-		DebugUtils.debug("MicroMsg.SmileyPanel.UIDeal", "already load view --- pass");
-//		this.mIsInit = false;
-		DebugUtils.debug("MicroMsg.SmileyPanel.UIDeal", "async load view");
+		DebugUtils.debug(TAG, "already load view --- pass");
+		this.mIsInit = false;
+		DebugUtils.debug(TAG, "async load view");
 		
 		if (this.mEmojiView == null)
 		{
-			this.mEmojiView = View.inflate(this.mContext, R.layout.smiley_panel_main, null);
-			this.mEmojiPanelVP = (EmojiPanelVP)findViewById(R.id.smiley_panel_view_pager);
+			this.mEmojiView = View.inflate(this.mContext, R.layout.smiley_panel, null);
+			this.mEmojiPanelVP = (ZYFlipper)findViewById(R.id.smiley_panel_flipper);
+			this.mEmojiPanelVP.setOnScrollScreenListener(this);
 			this.mZYDotView = (ZYDotView)findViewById(R.id.smiley_panel_dot);
 			this.mZYDotView.setSelectedDot(1);
 			this.mZYSmoothHorizontalScrollView = (ZYSmoothHorizontalScrollView)findViewById(R.id.smiley_scroll_view);
@@ -97,9 +105,24 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 			this.mSend_btn.setOnClickListener(this);
 		}
 
-		this.mSend_btn.setVisibility(View.VISIBLE);
+		// Emoji 页数
+		int emojiTotal = EmojiResourceReChange.getEmojiCodeLength(mContext) + EmojiResourceReChange.getSmileyCodeLength(mContext);
+		int numColumns = 7;
+		int itemsPerPage = numColumns * 3;
+		int pageSize = (int)Math.ceil((float)emojiTotal/itemsPerPage);
+		for(int i =0 ;i< pageSize;i++){
+			EmojiGrid emojiGrid = new EmojiGrid(this.mContext);
+			emojiGrid.setSelector(new ColorDrawable(Color.TRANSPARENT));
+			emojiGrid.setVerticalSpacing(ScreenUtils.fromDPToPix(80));
+			emojiGrid.setPageInfo(20, i, emojiTotal, itemsPerPage, pageSize, numColumns, BaseApplication.screenDisplayMetrics().widthPixels);
+			this.mEmojiPanelVP.addView(emojiGrid,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		}
+		this.mZYDotView.setMaxCount(pageSize);
+		this.mZYDotView.setDotImageView(pageSize);
+		this.mZYDotView.setSelectedDot(0);
+		this.mSend_btn.setVisibility(View.GONE);
 		paramViewGroup.addView(this.mEmojiView, new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-//		this.mIsInit = true;
+		this.mIsInit = true;
 	}
 	
 	/**
@@ -119,7 +142,7 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 	private void setScrollX(int tableNum)
 	{
 		int tabAllWidth = this.mZYRadioGroupView.getMeasuredWidth();
-		DebugUtils.debug("MicroMsg.SmileyPanel.UIDeal", "tabAllWidth: %d", new Integer[]{tabAllWidth});
+		DebugUtils.debug(TAG, "tabAllWidth: %d", new Integer[]{tabAllWidth});
 		int space = tabAllWidth - this.mZYSmoothHorizontalScrollView.getWidth();
 		
 		if (space <= 0) {
@@ -132,13 +155,13 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 		if ((scrollx > 0) && (scrollx >= emoji_panel_tab_width * tableNum))
 		{
 			this.mZYSmoothHorizontalScrollView.scrollTo(tableNum * emoji_panel_tab_width, 0);
-			DebugUtils.debug("MicroMsg.SmileyPanel.UIDeal", "adjusting tab site --- to left.");
+			DebugUtils.debug(TAG, "adjusting tab site --- to left.");
 		}
 		
 		if ((scrollx < space) && (scrollx + this.mZYSmoothHorizontalScrollView.getWidth() < emoji_panel_tab_width * (tableNum + 1)))
 		{
 			this.mZYSmoothHorizontalScrollView.scrollTo(emoji_panel_tab_width * (tableNum + 1) - this.mZYSmoothHorizontalScrollView.getWidth(), 0);
-			DebugUtils.debug("MicroMsg.SmileyPanel.UIDeal", "adjusting tab site --- to right.");
+			DebugUtils.debug(TAG, "adjusting tab site --- to right.");
 		}
 	}
 	
@@ -146,7 +169,7 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 	{
 		if (paramInt > 0)
 		{
-			DebugUtils.info("MicroMsg.SmileyPanel.UIDeal", "tab size changed ,so adjusting tab site.");
+			DebugUtils.info(TAG, "tab size changed ,so adjusting tab site.");
 		}
 	}
 	
@@ -210,7 +233,7 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 	 * 返回EmojiPanelVP
 	 * @return
 	 */
-	public final EmojiPanelVP getEmojiPanelVP()
+	public final ZYFlipper getEmojiPanelVP()
 	{
 		return this.mEmojiPanelVP;
 	}
@@ -269,7 +292,7 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 		}
 
 		this.mCurentPage = pageIndex;
-		DebugUtils.debug("MicroMsg.SmileyPanel.UIDeal", "onPageSelected: %d", new Integer[]{pageIndex});
+		DebugUtils.debug(TAG, "onPageSelected: %d", new Integer[]{pageIndex});
 //		setDotViewParams(locale.atk(), pageIndex - locale.ath());
 //		setScrollX(this.fqc.kH(pageIndex));
 	}
@@ -293,6 +316,11 @@ public final class EmojiPanelDialog implements IRadioButtonId,SizeChangedListene
 	@Override
 	public void onClick(View v) {
 		
+	}
+
+	@Override
+	public void scroolScreen(int oldIndex, int newIndex) {
+		this.mZYDotView.setSelectedDot(newIndex);
 	}
 
 }

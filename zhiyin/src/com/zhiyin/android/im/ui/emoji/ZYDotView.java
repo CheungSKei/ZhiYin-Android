@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
  */
 public class ZYDotView extends LinearLayout {
 
+	private final String TAG = "MicroMsg.ZYDotView";
+	
 	/**
 	 * 最大个数
 	 */
@@ -56,14 +58,14 @@ public class ZYDotView extends LinearLayout {
 	 * @param paramInt	首选项和状态
 	 */
 	public final void setDotImageView(int paramInt) {
-		DebugUtils.info("MicroMsg.MMDotView", "setDotCount:%d",
+		DebugUtils.info(TAG, "setDotCount:%d",
 				new Integer[] { paramInt });
 		if (paramInt < 0) {
 			return;
 		}
 
 		if (paramInt > this.mMaxCount) {
-			DebugUtils.info("MicroMsg.MMDotView", "large than max count");
+			DebugUtils.info(TAG, "large than max count");
 			paramInt = this.mMaxCount;
 		}
 
@@ -89,7 +91,7 @@ public class ZYDotView extends LinearLayout {
 	 * @param paramInt
 	 */
 	public final void setMaxCount(int paramInt) {
-		DebugUtils.warn("MicroMsg.MMDotView", "setMaxCount:%d",
+		DebugUtils.warn(TAG, "setMaxCount:%d",
 				new Integer[] { paramInt });
 		this.mMaxCount = paramInt;
 	}
@@ -99,12 +101,12 @@ public class ZYDotView extends LinearLayout {
 	 * @param paramInt
 	 */
 	public final void setSelectedDot(int paramInt) {
-		DebugUtils.info("MicroMsg.MMDotView", "setSelectedDot:target index is %d",new Integer[] { paramInt });
+		DebugUtils.info(TAG, "setSelectedDot:target index is %d",new Integer[] { paramInt });
 		if (paramInt >= getChildCount()) {
 			paramInt = -1 + getChildCount();
 		}
 
-		DebugUtils.info("MicroMsg.MMDotView","setSelectedDot:after adjust index is %d", new Integer[] { paramInt });
+		DebugUtils.info(TAG,"setSelectedDot:after adjust index is %d", new Integer[] { paramInt });
 		for (int i = 0; i < getChildCount(); i++) {
 			((ImageView) getChildAt(i)).setImageResource(R.drawable.page_normal);
 		}

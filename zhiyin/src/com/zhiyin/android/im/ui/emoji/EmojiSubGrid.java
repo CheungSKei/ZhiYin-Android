@@ -19,32 +19,21 @@ import com.zhiyin.android.im.R;
 public class EmojiSubGrid extends EmojiGrid{
 
 	private WindowManager mWindowManager;
-	private int dC;
+	private int mScaledTouchSlop;
 	private LayoutInflater mLayoutInflater;
-	float ddt;
-	float ddu;
-	int fjK = 6;
-	int fjL;
-	int fjM;
-	int fjN = -1;
 	Rect fjO = new Rect();
 	boolean fjP;
 	private EmojiView mEmojiView;
 	private ProgressBar mProgressBar;
 	private View mSmileyDialogPopview;
 	private WindowManager.LayoutParams mLayoutParams;
-	private int fjU;
-	private int fjV;
-	private boolean fjW;
+	private int mScreenWidth;
+	private int mScreenHeight;
 	private int mLongPressTimeout;
 	private int mPressedStateDuration;
 	private int mOrientation;
 	private int mColumnWidth;
-	private View fke;
 	private int mEmojiPreviewImageSize;
-	private String fkg;
-	private volatile int fki = -1;
-	private volatile boolean fkj = false;
 	
 	public EmojiSubGrid(Context context) {
 		this(context,null);
@@ -66,39 +55,34 @@ public class EmojiSubGrid extends EmojiGrid{
 		this.mLongPressTimeout = getLongPressTimeout();
 		this.mPressedStateDuration = ViewConfiguration.getPressedStateDuration();
 		this.mOrientation = getResources().getConfiguration().orientation;
+		// 横屏
 		if (this.mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-			this.fjU = this.mWindowManager.getDefaultDisplay().getHeight();
-			this.fjV = this.mWindowManager.getDefaultDisplay().getWidth();
+			this.mScreenWidth = this.mWindowManager.getDefaultDisplay().getHeight();
+			this.mScreenHeight = this.mWindowManager.getDefaultDisplay().getWidth();
 		}else{
-			this.fjU = this.mWindowManager.getDefaultDisplay().getWidth();
-			this.fjV = this.mWindowManager.getDefaultDisplay().getHeight();
+			this.mScreenWidth = this.mWindowManager.getDefaultDisplay().getWidth();
+			this.mScreenHeight = this.mWindowManager.getDefaultDisplay().getHeight();
 		}
 
-		setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+		setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		setBackgroundResource(0);
 		setStretchMode(STRETCH_COLUMN_WIDTH);
 		this.mColumnWidth = dipToPx(context, 80.0F);
 		setColumnWidth(this.mColumnWidth);
-		setNumColumns(this.fjU / this.mColumnWidth);
-		this.dC = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+		setNumColumns(this.mScreenWidth / this.mColumnWidth);
+		this.mScaledTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
 	}
 	
 	private void W(View paramView)
 	{
-		Rect localRect = this.fjO;
-		localRect.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-		this.fjO.set(localRect.left - getPaddingLeft(), localRect.top - getPaddingTop(), localRect.right + getPaddingRight(), localRect.bottom + getPaddingBottom());
+		this.fjO.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
+		this.fjO.set(this.fjO.left - getPaddingLeft(), this.fjO.top - getPaddingTop(), this.fjO.right + getPaddingRight(), this.fjO.bottom + getPaddingBottom());
 		if (paramView.isEnabled() != this.fjP && this.fjP) {
 			this.fjP = false;
 			refreshDrawableState();
 		}
 	}
 
-	protected int LF()
-	{
-		return 0;
-	}
-	
 	/**
 	 * 取得长按时间
 	 * @return
@@ -106,29 +90,6 @@ public class EmojiSubGrid extends EmojiGrid{
 	protected int getLongPressTimeout()
 	{
 		return ViewConfiguration.getLongPressTimeout();
-	}
-	
-	protected boolean LH()
-	{
-		return true;
-	}
-	
-	public final void V(View paramView)
-	{
-		this.fke = paramView;
-	}
-	
-	public final int ars()
-	{
-		return this.fjN;
-	}
-	
-	public final boolean arv()
-	{
-		if (this.fjK == 5) {
-			return false;
-		}
-		return true;
 	}
 	
 	/**

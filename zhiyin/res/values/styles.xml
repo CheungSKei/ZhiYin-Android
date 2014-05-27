@@ -46,4 +46,7 @@
         <item name="android:button">@null</item>
         <item name="android:layout_weight">1.0</item>
     </style>
+    <declare-styleable name="SlideStyledAttributes">
+        <attr name="view_screen" format="integer" />
+    </declare-styleable>
 </resources>

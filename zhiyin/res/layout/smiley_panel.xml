@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:id="@id/smile_panel_whole_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/smiley_panel_display_view" android:layout_width="fill_parent" android:layout_height="177.0dip">
-        <com.zhiyin.android.im.ui.emoji.ZYFlipper android:gravity="center" android:id="@id/smiley_panel_flipper" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.zhiyin.android.widget.ZYFlipper android:gravity="center" android:id="@id/smiley_panel_flipper" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
         <com.zhiyin.android.im.ui.emoji.ZYDotView android:gravity="center" android:orientation="horizontal" android:id="@id/smiley_panel_dot" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
     <FrameLayout android:orientation="horizontal" android:background="@drawable/bottombar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">

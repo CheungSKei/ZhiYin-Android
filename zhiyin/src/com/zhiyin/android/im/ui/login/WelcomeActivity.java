@@ -19,6 +19,8 @@ import com.zhiyin.android.im.R;
 import com.zhiyin.android.im.task.socket.AsyncCallBack;
 import com.zhiyin.android.im.task.socket.MessageSocketTaskImpl;
 import com.zhiyin.android.im.ui.BaseActivity;
+import com.zhiyin.android.im.ui.emoji.ChatFooterPanel;
+import com.zhiyin.android.im.ui.emoji.VPEmojiPanel;
 import com.zhiyin.android.network.socket.MessageConnectorManager;
 import com.zhiyin.android.network.socket.MessageConnectorService;
 import com.zhiyin.android.util.StringUtils;
@@ -38,6 +40,8 @@ public class WelcomeActivity extends BaseActivity{
 	private TextView msgContent;
 	private EditText mSendContent;
 	
+	private ChatFooterPanel mEmojiPanel;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// /---------------------
@@ -46,13 +50,15 @@ public class WelcomeActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		System.setProperty("java.net.preferIPv6Addresses", "false");
 
-		setContentView(R.layout.welcome_activity_layout);
-		btn = (Button) findViewById(R.id.sendBtn);
-		btn.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				if(!StringUtils.isEmpty(mSendContent.getText().toString())){
+		mEmojiPanel = new VPEmojiPanel(this);
+		setContentView(mEmojiPanel);
+//		setContentView(R.layout.welcome_activity_layout);
+//		btn = (Button) findViewById(R.id.sendBtn);
+//		btn.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				if(!StringUtils.isEmpty(mSendContent.getText().toString())){
 					// AbstractRequest内容
 					// FileRequest文件内容
 //					FileRequest fileRequest = new FileRequest();
@@ -62,65 +68,65 @@ public class WelcomeActivity extends BaseActivity{
 //					fileRequest.setCmd(Constants.IMCmd.IM_VOICE_CMD);
 //					fileRequest.setData(mapData);
 //					MessageConnectorManager.getManager().send(fileRequest);
-					Map<String, Object> mapData = new HashMap<String, Object>();
-					mapData.put("username", "wenhsh");//假设其对应的userId为1000
-					mapData.put("password", "123456");
-					mapData.put("confirmPassword", "123456");
-					new MessageSocketTaskImpl(new AsyncCallBack() {
-						
-						@Override
-						public void onReplyReceived_OK(Object replyMessage) {
-							
-						}
-						
-						@Override
-						public void onReplyReceived_ERROR(Object replyMessage) {
-							
-						}
-						
-						@Override
-						public void onMessageSentSuccessful(Object message) {
-							
-						}
-						
-						@Override
-						public void onMessageSentFailed(Exception e, Object message) {
-							
-						}
-						
-						@Override
-						public void onMessageReceived(Object receivedMessage) {
-							
-						}
-					}).commit(1001, mapData);
-					
-				}
-			}
-		});
-		
-		mLinkSocketbtn = (Button) findViewById(R.id.linkSocket);
-		mLinkSocketbtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				//连接服务端
-				Intent serviceIntent  = new Intent(WelcomeActivity.this, MessageConnectorService.class);
-				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_HOST, Constants.MESSAGE_SERVER_HOST);
-				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_PORT, Constants.MESSAGE_SERVER_PORT);
-				startService(serviceIntent);
-			}
-		});
-		
-		mNewPagebtn = (Button) findViewById(R.id.newPageBtn);
-		mNewPagebtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent =  new Intent(WelcomeActivity.this, WelcomeActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		msgContent = (TextView) findViewById(R.id.msgTxt);
-		mSendContent = (EditText) findViewById(R.id.sendContent);
+//					Map<String, Object> mapData = new HashMap<String, Object>();
+//					mapData.put("username", "wenhsh");//假设其对应的userId为1000
+//					mapData.put("password", "123456");
+//					mapData.put("confirmPassword", "123456");
+//					new MessageSocketTaskImpl(new AsyncCallBack() {
+//						
+//						@Override
+//						public void onReplyReceived_OK(Object replyMessage) {
+//							
+//						}
+//						
+//						@Override
+//						public void onReplyReceived_ERROR(Object replyMessage) {
+//							
+//						}
+//						
+//						@Override
+//						public void onMessageSentSuccessful(Object message) {
+//							
+//						}
+//						
+//						@Override
+//						public void onMessageSentFailed(Exception e, Object message) {
+//							
+//						}
+//						
+//						@Override
+//						public void onMessageReceived(Object receivedMessage) {
+//							
+//						}
+//					}).commit(1001, mapData);
+//					
+//				}
+//			}
+//		});
+//		
+//		mLinkSocketbtn = (Button) findViewById(R.id.linkSocket);
+//		mLinkSocketbtn.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				//连接服务端
+//				Intent serviceIntent  = new Intent(WelcomeActivity.this, MessageConnectorService.class);
+//				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_HOST, Constants.MESSAGE_SERVER_HOST);
+//				serviceIntent.putExtra(MessageConnectorManager.MESSAGE_SERVIER_PORT, Constants.MESSAGE_SERVER_PORT);
+//				startService(serviceIntent);
+//			}
+//		});
+//		
+//		mNewPagebtn = (Button) findViewById(R.id.newPageBtn);
+//		mNewPagebtn.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent =  new Intent(WelcomeActivity.this, WelcomeActivity.class);
+//				startActivity(intent);
+//			}
+//		});
+//		
+//		msgContent = (TextView) findViewById(R.id.msgTxt);
+//		mSendContent = (EditText) findViewById(R.id.sendContent);
 		
 	}
 	

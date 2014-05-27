@@ -6,11 +6,18 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
+/**
+ * Emoji弹出底部对话框
+ * 
+ * @version 1.0.0
+ * @date 2014-05-25
+ * @author S.Kei.Cheung
+ */
 public class VPEmojiPanel extends ChatFooterPanel {
 
 	public static int VERSION = 0;
 	private final String TAG = "MicroMsg.EmojiPanel.Main";
-	private EmojiPanelDialog mEmojiPanelDialog;
+	private UIDeal mEmojiPanelDialog;
 	
 	public VPEmojiPanel(Context context)
 	{
@@ -25,7 +32,8 @@ public class VPEmojiPanel extends ChatFooterPanel {
 	
 	private void init()
 	{
-		this.mEmojiPanelDialog = new EmojiPanelDialog(getContext());
+		this.mEmojiPanelDialog = new UIDeal(getContext());
+		this.mEmojiPanelDialog.initViewGroup(this);
 	}
 
 	@Override
@@ -38,6 +46,7 @@ public class VPEmojiPanel extends ChatFooterPanel {
 		DebugUtils.debug(TAG, "vpemoji ----- reflesh");
 		VERSION = 1 + VERSION;
 		// TODO:刷新 EmojiPanelDialog 初始化
+		
 	}
 
 	@Override
