@@ -6,4 +6,21 @@
     <string name="app_new">New</string>
     <string name="app_send">发送</string>
     <string name="app_sending">正在发送&#8230;</string>
+    <string name="chatfooter_presstorcd">按住 说话</string>
+    <string name="chatfooter_releasetofinish">松开 结束</string>
+    <string name="chatfooter_SpeakerON">使用听筒模式</string>
+    <string name="chatfooter_SpeakerOff">使用扬声器模式</string>
+    <string name="chatfooter_SpeakerOff_now">当前为听筒播放模式</string>
+    <string name="chatfooter_too_short">录音时间太短</string>
+    <string name="chatfooter_cancel_rcd">手指上滑，取消发送</string>
+    <string name="chatfooter_cancel_tips">松开手指，取消发送</string>
+    <string name="chatfooter_cancel_rcd_release">松开手指，取消发送</string>
+    <string name="chatfooter_delete_custom_emoji">确定删除该表情</string>
+    <string name="chatfooter_getting">获取中&#8230;</string>
+    <string name="chatting_send">发送</string>
+    <string name="chatting_copy">复制</string>
+    <string name="chatting_expose">投诉</string>
+    <string name="chatting_menu_clean">清除聊天记录</string>
+    <string name="chatting_chatroom_status_frozen_mild">此群已被冻结</string>
+    <string name="chatting_chatroom_status_frozen_serious">此群已被暂时关闭。</string>
 </resources>

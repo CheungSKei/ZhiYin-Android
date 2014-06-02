@@ -25,19 +25,24 @@
         <item name="android:minWidth">@dimen/SmallButtonWidth</item>
         <item name="android:minHeight">@dimen/SmallButtonHeight</item>
     </style>
+    
     <style name="ZYSmallGreenButton" parent="@style/ZYSmallButton">
         <item name="android:background">@drawable/btn_style_green</item>
     </style>
+    
     <style name="ZYSmallRedButton" parent="@style/ZYSmallButton">
         <item name="android:background">@drawable/btn_style_red</item>
     </style>
+    
     <style name="ZYSmallGreyButton" parent="@style/ZYSmallButton">
         <item name="android:textColor">@color/normal_text_color_selector</item>
         <item name="android:background">@drawable/btn_style_grey</item>
     </style>
+    
     <style name="ZYSmallBlackButton" parent="@style/ZYSmallButton">
         <item name="android:background">@drawable/btn_style_black</item>
     </style>
+    
     <style name="ZYStyleTabButton">
         <item name="android:textColor">@color/zy_smiley_tab_color</item>
         <item name="android:gravity">center</item>
@@ -46,7 +51,37 @@
         <item name="android:button">@null</item>
         <item name="android:layout_weight">1.0</item>
     </style>
-    <declare-styleable name="SlideStyledAttributes">
-        <attr name="view_screen" format="integer" />
-    </declare-styleable>
+    
+    <style name="ZYFooter">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">49.0dip</item>
+    </style>
+    
+    <style name="ZYEditText">
+        <item name="android:textSize">@dimen/NormalTextSize</item>
+        <item name="android:textColorHint">@color/light_text_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/edittext_bg_selector</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+    
+    <style name="ChattingUIWordCount">
+        <item name="android:textSize">13.0dip</item>
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="NavPage">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/navpage</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
 </resources>

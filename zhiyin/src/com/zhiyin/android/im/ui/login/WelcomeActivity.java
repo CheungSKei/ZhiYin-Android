@@ -1,29 +1,18 @@
 package com.zhiyin.android.im.ui.login;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.zhiyin.android.constant.Constants;
 import com.zhiyin.android.im.R;
-import com.zhiyin.android.im.task.socket.AsyncCallBack;
-import com.zhiyin.android.im.task.socket.MessageSocketTaskImpl;
 import com.zhiyin.android.im.ui.BaseActivity;
-import com.zhiyin.android.im.ui.emoji.ChatFooterPanel;
-import com.zhiyin.android.im.ui.emoji.VPEmojiPanel;
-import com.zhiyin.android.network.socket.MessageConnectorManager;
 import com.zhiyin.android.network.socket.MessageConnectorService;
-import com.zhiyin.android.util.StringUtils;
 
 /**
  * »¶Ó­Ò³.
@@ -40,8 +29,6 @@ public class WelcomeActivity extends BaseActivity{
 	private TextView msgContent;
 	private EditText mSendContent;
 	
-	private ChatFooterPanel mEmojiPanel;
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// /---------------------
@@ -50,8 +37,7 @@ public class WelcomeActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		System.setProperty("java.net.preferIPv6Addresses", "false");
 
-		mEmojiPanel = new VPEmojiPanel(this);
-		setContentView(mEmojiPanel);
+		setContentView(R.layout.chatting);
 //		setContentView(R.layout.welcome_activity_layout);
 //		btn = (Button) findViewById(R.id.sendBtn);
 //		btn.setOnClickListener(new OnClickListener() {

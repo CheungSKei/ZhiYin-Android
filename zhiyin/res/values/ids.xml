@@ -20,4 +20,21 @@
     <item type="id" name="send_btn">false</item>
     <item type="id" name="smiley_panel_view_pager">false</item>
     <item type="id" name="zypage_control_img">false</item>
+    <item type="id" name="chatting_foot_bar_group">false</item>
+    <item type="id" name="chatting_mode_switcher">false</item>
+    <item type="id" name="chatting_mode_btn">false</item>
+     <item type="id" name="text_panel_ll">false</item>
+    <item type="id" name="chatting_content_et">false</item>
+    <item type="id" name="chatting_smiley_btn">false</item>
+    <item type="id" name="voice_record_bt">false</item>
+    <item type="id" name="chatting_send_group">false</item>
+    <item type="id" name="chatting_wordcount_tv">false</item>
+    <item type="id" name="chatting_attach_btn">false</item>
+    <item type="id" name="chatting_send_btn">false</item>
+    <item type="id" name="chatting_bottom_panel">false</item>
+    <item type="id" name="chatting_app_panel">false</item>
+    <item type="id" name="chatting_bg_ll">false</item>
+    <item type="id" name="chatting_content">false</item>
+    <item type="id" name="nav_footer">false</item>
+    <item type="id" name="room_status_frozen_tv">false</item>
 </resources>

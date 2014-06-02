@@ -13,9 +13,20 @@ import android.widget.LinearLayout;
  */
 public abstract class ChatFooterPanel extends LinearLayout {
 
+	// Emoji事件监听
+	protected IEmojiChickedListener mEmojiChickedListener;
+	
 	public ChatFooterPanel(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+	}
+	
+	/**
+	 * 设置点击Emoji事件监听
+	 * @param iEmojiChickedListener
+	 */
+	public void setEmojiChickedListener(IEmojiChickedListener iEmojiChickedListener){
+		this.mEmojiChickedListener = iEmojiChickedListener;
 	}
 
 	public abstract void dealOrientationChange();

@@ -33,9 +33,15 @@ public class VPEmojiPanel extends ChatFooterPanel {
 	private void init()
 	{
 		this.mEmojiPanelDialog = new UIDeal(getContext());
-		this.mEmojiPanelDialog.initViewGroup(this);
 	}
 
+	@Override
+	public void setEmojiChickedListener(
+			IEmojiChickedListener iEmojiChickedListener) {
+		super.setEmojiChickedListener(iEmojiChickedListener);
+		this.mEmojiPanelDialog.initViewGroup(this);
+	}
+	
 	@Override
 	public void dealOrientationChange() {
 		DebugUtils.debug(TAG, "dealOrientationChange");
@@ -91,7 +97,7 @@ public class VPEmojiPanel extends ChatFooterPanel {
 	@Override
 	public final void destroy()
 	{
-
+		this.mEmojiChickedListener = null;
 	}
 
 	@Override
@@ -105,5 +111,13 @@ public class VPEmojiPanel extends ChatFooterPanel {
 		if (visibility == View.VISIBLE) {
 			this.mEmojiPanelDialog.initViewGroup(this);
 		}
+	}
+	
+	/**
+	 * 获取IEmojiChickedListener对象
+	 * @return
+	 */
+	public final IEmojiChickedListener getEmojiChickedListener(){
+		return this.mEmojiChickedListener;
 	}
 }

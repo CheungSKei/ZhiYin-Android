@@ -42,6 +42,8 @@ public class EmojiGrid extends GridView implements AdapterView.OnItemClickListen
 	private int mNumColumns;
 	// Emoji总数
 	private int mEmojiTotal;
+	// Emoji点击监听
+	private IEmojiChickedListener mEmojiChickedListener;
 	
 	public EmojiGrid(Context context)
 	{
@@ -166,8 +168,21 @@ public class EmojiGrid extends GridView implements AdapterView.OnItemClickListen
 		this.mEmojiGridAdapter.update();
 	}
 	
+	/**
+	 * 返回总页数
+	 * @return
+	 */
 	public int getTotalPage(){
 		return this.mTotalPage;
+	}
+	
+	/**
+	 * 设置Emoji点击监听
+	 * @param iEmojiChickedListener
+	 */
+	public final void setEmojiChickedListener(IEmojiChickedListener iEmojiChickedListener)
+	{
+		this.mEmojiChickedListener = iEmojiChickedListener;
 	}
 	
 	/**
@@ -178,12 +193,32 @@ public class EmojiGrid extends GridView implements AdapterView.OnItemClickListen
 	{
 		return this.mEmojiType;
 	}
+	
+	/**
+	 * 资源释放
+	 */
+	public final void release()
+	{
+		this.mEmojiChickedListener = null;
+	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO:通过点击相应Emoji和位置,通过c.java得到相应资源
-		
+		// 删除操作
+		if (position == -1 + this.mEmojiGridAdapter.getCount())
+		{
+			mEmojiChickedListener.deleteEmoji();
+		}
+		else if (position + this.mCurPage * (-1 + this.mItemsPerPage) < this.mEmojiTotal)
+		{
+			int i = position + this.mCurPage * (-1 + this.mItemsPerPage);
+			if (i<100) {
+				mEmojiChickedListener.append(EmojiResourceReChange.getSmileyText(this.mContext, i));
+			} else {
+				mEmojiChickedListener.append(EmojiResourceReChange.getEmojiText(this.mContext, i));
+			}
+		}
 	}
 
 	/**

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/chatting_foot_bar_group" android:background="@drawable/bottombar_bg" android:layout_height="wrap_content" style="@style/ZYFooter">
+        <LinearLayout android:orientation="horizontal" android:id="@id/chatting_mode_switcher" android:background="@drawable/bottombar_button_bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="bottom|center" android:paddingBottom="@dimen/ChattingFootPaddingBottom" android:layout_width="@dimen/ChattingFootSwitcherWidth" android:layout_height="wrap_content" android:src="@drawable/chatting_footer_switcher_input_selector" android:scaleType="center" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ChattingFootSendMargin" android:layout_marginRight="@dimen/ChattingFootSendMargin">
+            <ImageButton android:layout_gravity="bottom" android:id="@id/chatting_mode_btn" android:background="@null" android:paddingBottom="@dimen/ChattingFootPaddingBottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="11.0dip" android:src="@drawable/chatting_setmode_voice_btn" android:minWidth="0.0dip" />
+            <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/text_panel_ll" android:background="@drawable/edittext_group_bg_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.5dip" android:layout_marginBottom="5.5dip" android:layout_weight="1.0">
+                <com.zhiyin.android.widget.ZYEditText android:id="@id/chatting_content_et" android:background="@null" android:maxHeight="@dimen/ChattingFootEditMaxHeigh" android:minHeight="@dimen/ChattingFootEditMinHeigh" android:hint="@null" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textAutoCorrect|textMultiLine|textShortMessage" style="@style/ZYEditText" />
+                <ImageButton android:layout_gravity="bottom|center" android:id="@id/chatting_smiley_btn" android:background="@null" android:padding="@dimen/SmallPadding" android:layout_width="@dimen/ChattingFootSendHeight" android:layout_height="@dimen/ChattingFootSendHeight" android:src="@drawable/chatting_setmode_biaoqing_btn" />
+            </LinearLayout>
+            <Button android:textSize="@dimen/NormalTextSize" android:textColor="@color/footer_text_color" android:id="@id/voice_record_bt" android:background="@drawable/voice_rcd_btn_nor" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ChattingFootVoiceHeight" android:layout_marginLeft="@dimen/ChattingFootSmallerPadding" android:layout_marginRight="@dimen/ChattingFootSmallerPadding" android:text="@string/chatfooter_presstorcd" android:layout_weight="1.0" android:soundEffectsEnabled="true" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/chatting_send_group" android:paddingLeft="@dimen/ChattingFootSendMargin" android:paddingBottom="@dimen/ChattingFootPaddingBottom" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:gravity="top" android:id="@id/chatting_wordcount_tv" android:visibility="gone" style="@style/ChattingUIWordCount" />
+                <RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageButton android:gravity="center" android:layout_gravity="center" android:id="@id/chatting_attach_btn" android:background="@null" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/type_select_btn" android:layout_centerInParent="true" />
+                    <Button android:textSize="@dimen/HintTextSize" android:textColor="@color/footer_text_color" android:gravity="center" android:id="@id/chatting_send_btn" android:background="@drawable/chat_send_btn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ChattingFootSendHeight" android:minWidth="@dimen/ChattingFootSendMinWidth" android:text="@string/chatting_send" android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/chatting_bottom_panel" android:background="@drawable/bottombar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.zhiyin.android.im.ui.emoji.VPEmojiPanel android:id="@id/chatting_app_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

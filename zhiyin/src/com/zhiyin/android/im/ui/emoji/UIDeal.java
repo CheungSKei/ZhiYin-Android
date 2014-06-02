@@ -115,6 +115,7 @@ public final class UIDeal implements IRadioButtonId,SizeChangedListener,View.OnC
 			emojiGrid.setSelector(new ColorDrawable(Color.TRANSPARENT));
 			emojiGrid.setVerticalSpacing(ScreenUtils.fromDPToPix(80));
 			emojiGrid.setPageInfo(20, i, emojiTotal, itemsPerPage, pageSize, numColumns, BaseApplication.screenDisplayMetrics().widthPixels);
+			emojiGrid.setEmojiChickedListener(((VPEmojiPanel)paramViewGroup).getEmojiChickedListener());
 			this.mEmojiPanelVP.addView(emojiGrid,new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		}
 		this.mZYDotView.setMaxCount(pageSize);

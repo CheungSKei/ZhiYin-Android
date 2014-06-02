@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/chatting_bg_ll" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" style="@style/NavPage"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/chatting_content" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+       
+    </FrameLayout>
+    <TextView android:textSize="20.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/room_status_frozen_tv" android:background="@drawable/mmfooter_texttolisticon_frame" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/chatting_chatroom_status_frozen_mild" />
+    <com.zhiyin.android.im.ui.chat.ChatFooter android:id="@id/nav_footer" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

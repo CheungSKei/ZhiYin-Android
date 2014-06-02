@@ -19,6 +19,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.StatFs;
@@ -67,7 +68,7 @@ public class DeviceUtils {
 				}
 			}
 		}
-        return false;
+		return false;
 	}
 	
 	/**
@@ -75,9 +76,9 @@ public class DeviceUtils {
 	 * 
 	 * @param context
 	 * @return NetworkType.NONE: 无网络连接<br>
-	 *         NetworkType.WIFI: 通过WIFI连接网络<br>
-	 *         NetworkType.CMWAP: 通过移动, 联通GPRS连接网络<br>
-	 *         NetworkType.CTWAP: 通过电信GPRS连接网络<br>
+	 * NetworkType.WIFI: 通过WIFI连接网络<br>
+	 * NetworkType.CMWAP: 通过移动, 联通GPRS连接网络<br>
+	 * NetworkType.CTWAP: 通过电信GPRS连接网络<br>
 	 */
 	public static int checkNetWorkType(Context context) {
 		if (isAirplaneModeOn(context)) {
@@ -115,14 +116,14 @@ public class DeviceUtils {
 	 * 
 	 * @param context
 	 * @return NETWORK_NONE: 无网络连接<br>
-	 *         NETWORK_WIFI: 通过WIFI连接网络<br>
-	 *         NETWORK_CMWAP: 通过移动, 联通wap/GPRS连接网络<br>
-	 *         NETWORK_WAP_3G: 通过3G连接网络<br>
-	 *         NETWORK_NET_3G: 通过3G连接网络<br>
-	 *         NETWORK_CMWAP: 通过移动, 联通wap/GPRS连接网络<br>
-	 *         NETWORK_CTWAP: 通过电信wap/GPRS连接网络<br>
-	 *         NETWORK_CMNET: 通过移动, 联通GPRS连接网络<br>
-	 *         NETWORK_CTNET: 通过电信GPRS连接网络<br>
+	 * NETWORK_WIFI: 通过WIFI连接网络<br>
+	 * NETWORK_CMWAP: 通过移动, 联通wap/GPRS连接网络<br>
+	 * NETWORK_WAP_3G: 通过3G连接网络<br>
+	 * NETWORK_NET_3G: 通过3G连接网络<br>
+	 * NETWORK_CMWAP: 通过移动, 联通wap/GPRS连接网络<br>
+	 * NETWORK_CTWAP: 通过电信wap/GPRS连接网络<br>
+	 * NETWORK_CMNET: 通过移动, 联通GPRS连接网络<br>
+	 * NETWORK_CTNET: 通过电信GPRS连接网络<br>
 	 */
 	public static int checkNetworkTypeAll(Context context){
 		//飞行模式
@@ -139,27 +140,27 @@ public class DeviceUtils {
 		}
 		
 		if(info.getTypeName().equals("WIFI")){
-            return NETWORK_WIFI;
-	    }else{
-            if(info.getExtraInfo().equals("uninet"))
-               return NETWORK_UNINET;
-            if(info.getExtraInfo().equals("uniwap"))
-               return NETWORK_UNIWAP;
-            if(info.getExtraInfo().equals("3gwap"))
-               return NETWORK_WAP_3G;
-            if(info.getExtraInfo().equals("3gnet"))
-               return NETWORK_NET_3G;
-            if(info.getExtraInfo().equals("cmwap"))
-               return NETWORK_CMWAP;
-            if(info.getExtraInfo().equals("cmnet"))
-               return NETWORK_CMNET;
-            if(info.getExtraInfo().equals("ctwap"))
-               return NETWORK_CTWAP;
-            if(info.getExtraInfo().equals("ctnet"))
-               return NETWORK_CTNET;
+			return NETWORK_WIFI;
+		}else{
+			if(info.getExtraInfo().equals("uninet"))
+			 return NETWORK_UNINET;
+			if(info.getExtraInfo().equals("uniwap"))
+			 return NETWORK_UNIWAP;
+			if(info.getExtraInfo().equals("3gwap"))
+			 return NETWORK_WAP_3G;
+			if(info.getExtraInfo().equals("3gnet"))
+			 return NETWORK_NET_3G;
+			if(info.getExtraInfo().equals("cmwap"))
+			 return NETWORK_CMWAP;
+			if(info.getExtraInfo().equals("cmnet"))
+			 return NETWORK_CMNET;
+			if(info.getExtraInfo().equals("ctwap"))
+			 return NETWORK_CTWAP;
+			if(info.getExtraInfo().equals("ctnet"))
+			 return NETWORK_CTNET;
 
-            return NETWORK_MOBILE;
-	    }
+			return NETWORK_MOBILE;
+		}
 	}
 	
 	
@@ -210,80 +211,80 @@ public class DeviceUtils {
 	}
 	
 	/**
-     * Get the size in bytes of a bitmap.
-     * 
-     * @param bitmap
-     * @return size in bytes
-     */
-    public static int getBitmapSize(Bitmap bitmap) {
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
-            return bitmap.getByteCount();
-        }*/
-        // Pre HC-MR1
-        return bitmap.getRowBytes() * bitmap.getHeight();
-    }
-    
-    /**
-     * Check how much usable space is available at a given path.
-     *
-     * @param path The path to check
-     * @return The space available in bytes
-     */
-    public static long getUsableSpace(File path) {
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-            return path.getUsableSpace();
-        }*/
-        final StatFs stats = new StatFs(path.getPath());
-        return (long) stats.getBlockSize() * (long) stats.getAvailableBlocks();
-    }
-    
-    /**
-     * Get the memory class of this device (approx. per-app memory limit)
-     *
-     * @param context
-     * @return
-     */
-    public static int getMemoryClass(Context context) {
-        return ((ActivityManager) context.getSystemService(
-                Context.ACTIVITY_SERVICE)).getMemoryClass();
-    }
-    
-    /**
-     * Get a usable cache directory (external if available, internal otherwise).
-     *
-     * @return The cache dir
-     */
-    public static File getDiskCacheDir() {
-    	return getDiskCacheDir(BaseApplication.getContext());
-    }
+	 * Get the size in bytes of a bitmap.
+	 * 
+	 * @param bitmap
+	 * @return size in bytes
+	 */
+	public static int getBitmapSize(Bitmap bitmap) {
+		/*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
+		return bitmap.getByteCount();
+		}*/
+		// Pre HC-MR1
+		return bitmap.getRowBytes() * bitmap.getHeight();
+	}
 
-    /**
-     * Get a usable cache directory (external if available, internal otherwise).
-     *
-     * @return The cache dir
-     */
-    public static File getDiskCacheDir(Context context) {
-        // Check if media is mounted or storage is built-in, if so, try and use external cache dir
-        // otherwise use internal cache dir
-		File cacheDir = null;
-		if (isSDCardUsable()) {
-			cacheDir = new File(Environment.getExternalStorageDirectory(),Constants.DEFAULT_IMAGE_FOLDER_NAME);
-		} else {
-			cacheDir = context.getFilesDir();
+	/**
+	 * Check how much usable space is available at a given path.
+	 *
+	 * @param path The path to check
+	 * @return The space available in bytes
+	 */
+	public static long getUsableSpace(File path) {
+		/*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+		return path.getUsableSpace();
+		}*/
+		final StatFs stats = new StatFs(path.getPath());
+		return (long) stats.getBlockSize() * (long) stats.getAvailableBlocks();
+	}
+
+	/**
+	 * Get the memory class of this device (approx. per-app memory limit)
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static int getMemoryClass(Context context) {
+	return ((ActivityManager) context.getSystemService(
+	Context.ACTIVITY_SERVICE)).getMemoryClass();
+	}
+
+	/**
+	 * Get a usable cache directory (external if available, internal otherwise).
+	 *
+	 * @return The cache dir
+	 */
+	public static File getDiskCacheDir() {
+		return getDiskCacheDir(BaseApplication.getContext());
+	}
+
+	/**
+	 * Get a usable cache directory (external if available, internal otherwise).
+	 *
+	 * @return The cache dir
+	 */
+	public static File getDiskCacheDir(Context context) {
+	// Check if media is mounted or storage is built-in, if so, try and use external cache dir
+	// otherwise use internal cache dir
+			File cacheDir = null;
+			if (isSDCardUsable()) {
+				cacheDir = new File(Environment.getExternalStorageDirectory(),Constants.DEFAULT_IMAGE_FOLDER_NAME);
+			} else {
+				cacheDir = context.getFilesDir();
+			}
+		
+		if (cacheDir != null && !cacheDir.exists()) {
+			cacheDir.mkdirs();
 		}
-    	
-    	if (cacheDir != null && !cacheDir.exists()) {
-    		cacheDir.mkdirs();
-    	}
-    	
-    	return cacheDir;
-    }
+		
+		return cacheDir;
+	}
 
-    /**
-     * 获取CPU信息.
-     * 
-     * @return "CPU核心个数 x CPU频率"
-     */
+	/**
+	 * 获取CPU信息.
+	 * 
+	 * @return "CPU核心个数 x CPU频率"
+	 */
 	public static String getCpuInfo() {
 		return getCpuCoreCount() + " x " + getCpuFrequency();
 	}
@@ -347,58 +348,70 @@ public class DeviceUtils {
 			}
 		}
 	}
-    
+
 	/**
 	 * 获得系统总内存大小.
 	 * 
 	 * @param context
 	 * @return
 	 */
-	public static String getSystemTotalMemory(Context context) {  
-		// 系统内存信息文件  
-        String memInfoFilePath = "/proc/meminfo";
-        String firstLine;  
-        String[] arrayOfString;  
-        long initialMemory = 0;  
-        BufferedReader localBufferedReader = null;
-        try {  
-            FileReader localFileReader = new FileReader(memInfoFilePath);  
-			localBufferedReader = new BufferedReader(
-					localFileReader, 10240);
-            // 读取meminfo第一行, 系统总内存大小
-            firstLine = localBufferedReader.readLine();  
-            arrayOfString = firstLine.split("\\s+");  
-            // 获得系统总内存, 单位是KB, 乘以1024转换为Byte
-            initialMemory = Long.valueOf(arrayOfString[1].trim()) * 1024;  
-        } catch (Exception e) {
+	public static String getSystemTotalMemory(Context context) {
+		// 系统内存信息文件
+		String memInfoFilePath = "/proc/meminfo";
+		String firstLine;
+		String[] arrayOfString;
+		long initialMemory = 0;
+		BufferedReader localBufferedReader = null;
+		try {
+			FileReader localFileReader = new FileReader(memInfoFilePath);
+			localBufferedReader = new BufferedReader(localFileReader, 10240);
+			// 读取meminfo第一行, 系统总内存大小
+			firstLine = localBufferedReader.readLine();
+			arrayOfString = firstLine.split("\\s+");
+			// 获得系统总内存, 单位是KB, 乘以1024转换为Byte
+			initialMemory = Long.valueOf(arrayOfString[1].trim()) * 1024;
+		} catch (Exception e) {
 			DebugUtils.error(e.getMessage(), e);
-        	// ignore.
-        }  finally {
-        	if (localBufferedReader != null) {
-        		try {
+			// ignore.
+		}finally {
+			if (localBufferedReader != null) {
+				try {
 					localBufferedReader.close();
 				} catch (IOException e) {
 					// ignore
 				}
-        	}
-        }
-        
-        // 内存大小规格化, Byte转换为KB或者MB
-        return Formatter.formatFileSize(context, initialMemory);  
-    }
-    
-    /**
-     * 获取系统当前可用内存.
-     * 
-     * @param context
-     * @return
-     */
-	public static String getSystemAvailMemory(Context context) {  
+			}
+		}
+
+		// 内存大小规格化, Byte转换为KB或者MB
+		return Formatter.formatFileSize(context, initialMemory);
+	}
+
+	/**
+	 * 获取系统当前可用内存.
+	 * 
+	 * @param context
+	 * @return
+	 */
+	public static String getSystemAvailMemory(Context context) {
 		ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        MemoryInfo memoryInfo = new MemoryInfo();  
-        activityManager.getMemoryInfo(memoryInfo);  
-        // 内存大小规格化, Byte转换为KB或者MB
-        return Formatter.formatFileSize(context, memoryInfo.availMem); 
-    }
+		MemoryInfo memoryInfo = new MemoryInfo();
+		activityManager.getMemoryInfo(memoryInfo);
+		// 内存大小规格化, Byte转换为KB或者MB
+		return Formatter.formatFileSize(context, memoryInfo.availMem); 
+	}
 	
+	/**
+	 * 当前系统是否大于给定值
+	 * @param sdkVersion 给定系统版本限定值
+	 * @return
+	 */
+	public static boolean isBigerSDKVersion(int sdkVersion)
+	{
+		if (Build.VERSION.SDK_INT >= sdkVersion) {
+			return true;
+		}
+	
+		return false;
+	}
 }
